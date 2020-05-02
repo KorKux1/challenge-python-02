@@ -1,11 +1,20 @@
 # Resolve the problem!!
 import string
+from random import randint, choice
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
-
 def generate_password():
-    # Start coding here
+    LETTERS = string.ascii_letters
+    UPPER_LETERS = LETTERS[int(len(LETTERS)/2):]
+    LOWER_LETTERS = LETTERS[:int(len(LETTERS)/2)]
+    DIGITS = string.digits
+    size = randint(8,16)
+    password = ''
+    while len(password) <= size:
+        password += (choice(SYMBOLS) + choice(UPPER_LETERS) + choice(DIGITS) + choice(LOWER_LETTERS))
+
+    return password[:size]
 
 
 def validate(password):
