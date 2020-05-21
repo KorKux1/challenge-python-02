@@ -5,9 +5,8 @@ from random import randint, choice, sample
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 def generate_password():
-    LETTERS = string.ascii_letters
-    UPPER_LETERS = LETTERS[int(len(LETTERS)/2):]
-    LOWER_LETTERS = LETTERS[:int(len(LETTERS)/2)]
+    UPPER_LETERS = string.ascii_uppercase
+    LOWER_LETTERS = string.ascii_lowercase
     DIGITS = string.digits
     size = randint(8,16)
     password = []
