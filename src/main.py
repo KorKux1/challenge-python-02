@@ -1,6 +1,6 @@
 # Resolve the problem!!
 import string
-from random import randint, choice
+from random import randint, choice, sample
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
@@ -10,15 +10,17 @@ def generate_password():
     LOWER_LETTERS = LETTERS[:int(len(LETTERS)/2)]
     DIGITS = string.digits
     size = randint(8,16)
-    password = ''
+    password = []
+    
     while len(password) <= size:
-        password += (choice(SYMBOLS) + choice(UPPER_LETERS) + choice(DIGITS) + choice(LOWER_LETTERS))
+        password += sample(SYMBOLS, randint(1,4)) +sample(UPPER_LETERS, randint(1,4)) + sample(DIGITS, randint(1,4)) + sample(LOWER_LETTERS, randint(1,4))
 
-    return password[:size]
+    password = password[:size]
+
+    return ''.join(sample(password, len(password)))
 
 
 def validate(password):
-
     if len(password) >= 8 and len(password) <= 16:
         has_lowercase_letters = False
         has_numbers = False
